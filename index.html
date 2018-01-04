@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-16">
+    <script src='hangul.js'></script>
+</head>
+<body>
+<h3>Hangul Romanization</h3>
+<input type='text' id='hangulField' tplaceholder='Type one or more hangul here...'>
+<input type='button' value='Romanize' onclick='startConversion();'>
+<br>
+<p><b>Romanized: </b><span id='romanized'></span></p>
+<p><b>Parts: </b><span id='parts'></span></p>
+
+<script>
+function startConversion(){
+    var hanguls = document.getElementById('hangulField').value;
+    var romanized = hangul.romanize(hanguls);
+    var jamo = hangul.jamo(hanguls);
+    document.getElementById('romanized').innerHTML = romanized;
+    document.getElementById('parts').innerHTML = jamo;
+}
+</script>
+</body>
+</html>
