@@ -1,0 +1,27 @@
+{
+  "name": "hangulromanization",
+  "version": "1.0.0",
+  "description": "Romanization for Hangul for Markus internal use",
+  "main": "hangul.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MGelein/hangul.git"
+  },
+  "keywords": [
+    "hangul"
+  ],
+  "author": "Mees Gelein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MGelein/hangul/issues"
+  },
+  "homepage": "https://github.com/MGelein/hangul#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony"
+  }
+}
