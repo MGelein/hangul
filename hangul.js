@@ -1,5 +1,5 @@
 /**Object to hang all methods onto to prevent pollution of global namespace */
-var hangul = {};
+const hangul = {};
 
 /**Saves all the hangul.tail consonants */
 hangul.tails = {};
@@ -129,10 +129,10 @@ hangul.getTailIndex = function(modCodePoint){
  * @param {String} character string of length 1 
  */
 hangul.getJamoIndeces = function(character){
-    var modCP = hangul.getModCodePoint(character);
-    var tail = hangul.getTailIndex(modCP);
-    var vowel = hangul.getVowelIndex(modCP, tail);
-    var lead = hangul.getLeadIndex(modCP);
+    const modCP = hangul.getModCodePoint(character);
+    const tail = hangul.getTailIndex(modCP);
+    const vowel = hangul.getVowelIndex(modCP, tail);
+    const lead = hangul.getLeadIndex(modCP);
     return [lead, vowel, tail];
 }
 
@@ -141,11 +141,11 @@ hangul.getJamoIndeces = function(character){
  * @param {String} character string of length 1 
  */
 hangul.getJamoRomanPair = function(character){
-    var indices = hangul.getJamoIndeces(character);
-    var lead = hangul.leads[indices[0]];
-    var vowel = hangul.vowels[indices[1]];
-    var tail = hangul.tails[indices[2]];
-    var result = [];
+    const indices = hangul.getJamoIndeces(character);
+    const lead = hangul.leads[indices[0]];
+    const vowel = hangul.vowels[indices[1]];
+    const tail = hangul.tails[indices[2]];
+    const result = [];
     //Only add none undefined values to this list
     if(lead) result.push(lead);
     if(vowel) result.push(vowel);
@@ -159,9 +159,9 @@ hangul.getJamoRomanPair = function(character){
  * @param {Boolean} romanization whether you want to return the romanized version of the hangul
  */
 hangul.getJamo = function(character, romanization){
-    var pairs = hangul.getJamoRomanPair(character);
+    const pairs = hangul.getJamoRomanPair(character);
     //If there are no pairs, this means it is not a hangul character
-    if(pairs.length == 0) return [character];
+    if(pairs.length === 0) return [character];
     for(index in pairs){
         if(pairs[index]){//If it is not undefined
             pairs[index] = (!romanization) ? pairs[index].jamo : pairs[index].roman;
@@ -177,12 +177,12 @@ hangul.getJamo = function(character, romanization){
  * @param {Boolean} jamo should we return jamo (true) or return romanized(omitted || false)
  */
 hangul.decode = function(string, jamo){
-    var result = '';
+    const result = [];
     for(index in string){
         var roman = hangul.getJamo(string.substr(index, 1), !jamo).join('');
-        result += roman;
+        result.push(roman);
     }
-    return result;
+    return result.join('');
 }
 
 /**
